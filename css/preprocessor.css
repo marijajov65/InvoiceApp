@@ -136,6 +136,11 @@
   }
 }
 
+.button:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
 .container {
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -482,7 +487,6 @@ label {
 
 img {
   border-radius: 1px;
-  width: 400px;
   min-height: 100px;
   z-index: 40;
   position: absolute;

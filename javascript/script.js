@@ -531,6 +531,97 @@ scaleHeight = height/originalImageHeight;
 scaleWidth = width/originalImageWidth;
 
 
+//ako je pdf file
+if(ext == "pdf"){
+
+alert("hello");
+  jQuery('#fileCanvas').show();
+  
+    pdf_url = URL.createObjectURL(jQuery("#fileInput").get(0).files[0]);
+    PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
+      __PDF_DOC = pdf_doc;
+      __TOTAL_PAGES = __PDF_DOC.numPages;
+      alert("hello");
+      // Show the first page
+      showPage(1);
+    }).catch(function(error) {
+      // If error re-show the upload button
+      //jQuery("#pdf-loader").hide();
+      //jQuery("#upload-button").show();
+      
+      alert(error.message);
+    });;
+  
+  
+  function showPage(page_no) {
+    __PAGE_RENDERING_IN_PROGRESS = 1;
+    __CURRENT_PAGE = page_no;
+    
+    // Fetch the page
+    __PDF_DOC.getPage(page_no).then(function(page) {
+      // As the canvas is of a fixed width we need to set the scale of the viewport accordingly
+      
+      
+      /*
+      var scale_required = __CANVAS.width / page.getViewport(1).width;
+  
+      // Get viewport of the page at required scale
+      var viewport = page.getViewport(scale_required); //scale_required
+  
+      // Set canvas height
+      __CANVAS.height = viewport.height;
+  
+      var renderContext = {
+        canvasContext: __CANVAS_CTX,
+        viewport: viewport
+      };
+      
+      // Render the page contents in the canvas
+      page.render(renderContext).then(function() {
+        __PAGE_RENDERING_IN_PROGRESS = 0;
+  
+        // Re-enable Prev & Next buttons
+        //jQuery("#pdf-next, #pdf-prev").removeAttr('disabled');
+  
+        // Show the canvas and hide the page loader
+        jQuery("#fileCanvas").show();
+        //jQuery("#page-loader").hide();
+        //jQuery("#download-image").show();
+      });
+      */
+  // Set scale (zoom) level
+  var scale = scaleHeight;
+  
+  // Get viewport (dimensions)
+  var viewport = page.getViewport(scale);
+  
+  // Get div#the-svg
+  var container = document.getElementById('filePlaceholder');
+ 
+  // Set dimensions
+  container.style.width = viewport.width + 'px';
+  container.style.height = viewport.height + 'px';
+  container.style.backgroundColor = "#ffffff"
+  
+  // SVG rendering by PDF.js
+  page.getOperatorList()
+    .then(function (opList) {
+    var svgGfx = new PDFJS.SVGGraphics(page.commonObjs, page.objs);
+    return svgGfx.getSVG(opList, viewport);
+    })
+    .then(function (svg) {
+      alert("hello");
+    container.appendChild(svg);
+    });
+  
+    });
+    
+  }
+
+
+
+
+}
 
 //showPdf(img.src);
 
@@ -862,18 +953,14 @@ let img1 = new Image();
 img1.src = window.webkitURL.createObjectURL(evt.target.files[0]);
 
 img1.style.display="none";
-
 img1.onload = () => {
    originalImageWidth =  img1.width;
    originalImageHeight = img1.height;
    resizeTheImage(img1);
 }
-
-
 files = evt.target.files; 
 ext = getExt(files[0].name);
 //ako je pdf file
-
 if(ext == "pdf"){
 
   alert("hello");
@@ -883,7 +970,7 @@ if(ext == "pdf"){
       PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
         __PDF_DOC = pdf_doc;
         __TOTAL_PAGES = __PDF_DOC.numPages;
-        
+        alert("hello");
         // Show the first page
         showPage(1);
       }).catch(function(error) {
@@ -951,39 +1038,14 @@ files[0].name = files[0].name.substr(0,dot_pos) + ".png";
   });
 
   function showPage(page_no) {
-    document.getElementById("fileCanvas").style.display = 'none';
     __PAGE_RENDERING_IN_PROGRESS = 1;
     __CURRENT_PAGE = page_no;
     
     // Fetch the page
     __PDF_DOC.getPage(page_no).then(function(page) {
       // As the canvas is of a fixed width we need to set the scale of the viewport accordingly
-      var scale = 1;
-      var viewport = page.getViewport( 1 );
-      var originalWidth = viewport.width;
-      var originalHeight = viewport.height;
-
-      var width = originalWidth;
-      var height = originalHeight;
-      var MAX_WIDTH = 600;
-
-  var MAX_HEIGHT = 645;
-
-if (width > height) {
-  if (width > MAX_WIDTH) {
-    height *= MAX_WIDTH / width;
-    width = MAX_WIDTH;
-    scale = MAX_WIDTH / width;
-  }
-} else {
-  if (height > MAX_HEIGHT) {
-    width *= MAX_HEIGHT / height;
-    height = MAX_HEIGHT;
-    scale = MAX_HEIGHT / height;
-  }
-}
-  var scaleHeight = height/originalHeight;
-
+      
+      
       /*
       var scale_required = __CANVAS.width / page.getViewport(1).width;
   
@@ -1012,8 +1074,8 @@ if (width > height) {
       });
       */
   // Set scale (zoom) level
-  scale = scaleHeight;
-
+  var scale = scaleHeight;
+  
   // Get viewport (dimensions)
   var viewport = page.getViewport(scale);
   
@@ -1022,10 +1084,8 @@ if (width > height) {
   alert("hello");
   // Set dimensions
   container.style.width = viewport.width + 'px';
-  
-
   container.style.height = viewport.height + 'px';
-  container.style.backgroundColor = "#ffffff";
+  container.style.backgroundColor = "#ffffff"
   
   // SVG rendering by PDF.js
   page.getOperatorList()
@@ -1117,7 +1177,7 @@ newHeight = height+y;
 area.coords = x +","+y+","+newWidth+","+newHeight;
 area.href = "";
 area.setAttribute("class","area");
-area.setAttribute('data-maphilight','{\"strokeColor\":\"0000ff\",\"strokeWidth\":1,\"fillColor\":\"ff0000\",\"fillOpacity\":0.6}');
+area.setAttribute('data-maphilight','{\"strokeColor\":\"4b9d7e\",\"strokeWidth\":1,\"fillColor\":\"c2ecdc\",\"fillOpacity\":0.3}');
 //area.onclick= highlightSelectBox(access);
 
 jQuery(".area").on("click", function(e){
