@@ -1,472 +1,3 @@
-var text = {
-  "status": "success",
-  "invoiceType": "hotel",
-  "invoiceIssuer": {
-    "issuer": "Motel One Berlin-Alexanderplatz",
-    "location": {
-      "x": 49.0,
-      "y": 202.0,
-      "width": 21.0,
-      "height": 11.0
-    }
-  },
-  "invoiceDate": {
-    "date": "2018-11-21",
-    "location": {
-      "x": 275.0,
-      "y": 511.0,
-      "width": 63.0,
-      "height": 16.0
-    }
-  },
-  "paymentDate": {
-    "date": "2018-11-01",
-    "location": {
-      "x": 57.0,
-      "y": 816.0,
-      "width": 147.0,
-      "height": 18.0
-    }
-  },
-  "invoiceId": {
-    "id": "552072342",
-    "location": {
-      "x": 275.0,
-      "y": 535.0,
-      "width": 63.0,
-      "height": 15.0
-    }
-  },
-  "totalAmount": {
-    "amount": 162.0,
-    "currency": "€",
-    "location": {
-      "x": 716.0,
-      "y": 731.0,
-      "width": 29.0,
-      "height": 16.0
-    }
-  },
-  "vatAmounts": [
-    {
-      "amount": {
-        "amount": 3.03,
-        "currency": "€",
-        "location": {
-          "x": 689.0,
-          "y": 1009.0,
-          "width": 24.0,
-          "height": 16.0
-        }
-      },
-      "percentage": {
-        "percentage": 19.0,
-        "location": {
-          "x": 477.0,
-          "y": 679.0,
-          "width": 34.0,
-          "height": 15.0
-        }
-      }
-    },
-    {
-      "amount": {
-        "amount": 9.36,
-        "currency": "€",
-        "location": {
-          "x": 689.0,
-          "y": 1033.0,
-          "width": 24.0,
-          "height": 15.0
-        }
-      },
-      "percentage": {
-        "percentage": 7.0,
-        "location": {
-          "x": 487.0,
-          "y": 702.0,
-          "width": 27.0,
-          "height": 15.0
-        }
-      }
-    },
-    {
-      "amount": {
-        "amount": 9.36,
-        "currency": "€",
-        "location": {
-          "x": 689.0,
-          "y": 1033.0,
-          "width": 24.0,
-          "height": 15.0
-        }
-      },
-      "percentage": {
-        "percentage": 7.0,
-        "location": {
-          "x": 487.0,
-          "y": 702.0,
-          "width": 27.0,
-          "height": 15.0
-        }
-      }
-    },
-    {
-      "amount": {
-        "amount": 3.03,
-        "currency": "€",
-        "location": {
-          "x": 689.0,
-          "y": 1009.0,
-          "width": 24.0,
-          "height": 16.0
-        }
-      },
-      "percentage": {
-        "percentage": 19.0,
-        "location": {
-          "x": 477.0,
-          "y": 679.0,
-          "width": 34.0,
-          "height": 15.0
-        }
-      }
-    }
-  ],
-  "dates": [
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 275.0,
-        "y": 511.0,
-        "width": 63.0,
-        "height": 16.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 275.0,
-        "y": 511.0,
-        "width": 63.0,
-        "height": 16.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 733.0,
-        "y": 536.0,
-        "width": 60.0,
-        "height": 16.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 733.0,
-        "y": 536.0,
-        "width": 60.0,
-        "height": 16.0
-      }
-    },
-    {
-      "date": "2018-11-23",
-      "location": {
-        "x": 733.0,
-        "y": 559.0,
-        "width": 66.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-23",
-      "location": {
-        "x": 733.0,
-        "y": 559.0,
-        "width": 66.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 417.0,
-        "y": 606.0,
-        "width": 58.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 417.0,
-        "y": 606.0,
-        "width": 58.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-23",
-      "location": {
-        "x": 555.0,
-        "y": 607.0,
-        "width": 63.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-23",
-      "location": {
-        "x": 555.0,
-        "y": 607.0,
-        "width": 63.0,
-        "height": 15.0
-      }
-    },
-    {
-      "date": "2018-11-01",
-      "location": {
-        "x": 57.0,
-        "y": 816.0,
-        "width": 147.0,
-        "height": 18.0
-      }
-    },
-    {
-      "date": "2018-11-01",
-      "location": {
-        "x": 57.0,
-        "y": 816.0,
-        "width": 147.0,
-        "height": 18.0
-      }
-    },
-    {
-      "date": "2018-11-21",
-      "location": {
-        "x": 275.0,
-        "y": 511.0,
-        "width": 63.0,
-        "height": 16.0
-      }
-    },
-    {
-      "date": "2018-11-01",
-      "location": {
-        "x": 57.0,
-        "y": 816.0,
-        "width": 147.0,
-        "height": 18.0
-      }
-    }
-  ],
-  "ids": [
-    {
-      "id": "552072342",
-      "location": {
-        "x": 275.0,
-        "y": 535.0,
-        "width": 63.0,
-        "height": 15.0
-      }
-    },
-    {
-      "id": "552072342",
-      "location": {
-        "x": 275.0,
-        "y": 535.0,
-        "width": 63.0,
-        "height": 15.0
-      }
-    }
-  ],
-  "amounts": [
-    {
-      "amount": 3.03,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1009.0,
-        "width": 24.0,
-        "height": 16.0
-      }
-    },
-    {
-      "amount": 3.03,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1009.0,
-        "width": 24.0,
-        "height": 16.0
-      }
-    },
-    {
-      "amount": 9.36,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1033.0,
-        "width": 24.0,
-        "height": 15.0
-      }
-    },
-    {
-      "amount": 9.36,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1033.0,
-        "width": 24.0,
-        "height": 15.0
-      }
-    },
-    {
-      "amount": 3.03,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1009.0,
-        "width": 24.0,
-        "height": 16.0
-      }
-    },
-    {
-      "amount": 9.36,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1033.0,
-        "width": 24.0,
-        "height": 15.0
-      }
-    },
-    {
-      "amount": 9.36,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1033.0,
-        "width": 24.0,
-        "height": 15.0
-      }
-    },
-    {
-      "amount": 3.03,
-      "currency": "€",
-      "location": {
-        "x": 689.0,
-        "y": 1009.0,
-        "width": 24.0,
-        "height": 16.0
-      }
-    }
-  ],
-  "percentages": [
-    {
-      "percentage": 19.0,
-      "location": {
-        "x": 477.0,
-        "y": 679.0,
-        "width": 34.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 19.0,
-      "location": {
-        "x": 477.0,
-        "y": 679.0,
-        "width": 34.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 7.0,
-      "location": {
-        "x": 487.0,
-        "y": 702.0,
-        "width": 27.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 7.0,
-      "location": {
-        "x": 487.0,
-        "y": 702.0,
-        "width": 27.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 19.0,
-      "location": {
-        "x": 45.0,
-        "y": 1007.0,
-        "width": 30.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 19.0,
-      "location": {
-        "x": 45.0,
-        "y": 1007.0,
-        "width": 30.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 7.0,
-      "location": {
-        "x": 44.0,
-        "y": 1031.0,
-        "width": 26.0,
-        "height": 15.0
-      }
-    },
-    {
-      "percentage": 7.0,
-      "location": {
-        "x": 44.0,
-        "y": 1031.0,
-        "width": 26.0,
-        "height": 15.0
-      }
-    }
-  ],
-  "types": [
-    "hotel",
-    "parking",
-    "gas",
-    "plane",
-    "taxi",
-    "train",
-    "public"
-  ],
-  "issuers": [
-    {
-      "issuer": "Motel One Berlin-Alexanderplatz",
-      "location": {
-        "x": 49.0,
-        "y": 202.0,
-        "width": 21.0,
-        "height": 11.0
-      }
-    },
-    {
-      "issuer": "Motel One Berlin-Alexanderplatz",
-      "location": {
-        "x": 49.0,
-        "y": 202.0,
-        "width": 21.0,
-        "height": 11.0
-      }
-    }
-  ]
-};
 
 var __PDF_DOC,
     __CURRENT_PAGE,
@@ -534,14 +65,14 @@ scaleWidth = width/originalImageWidth;
 //ako je pdf file
 if(ext == "pdf"){
 
-alert("hello");
+alert(scaleHeight);
   jQuery('#fileCanvas').show();
   
     pdf_url = URL.createObjectURL(jQuery("#fileInput").get(0).files[0]);
     PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
       __PDF_DOC = pdf_doc;
       __TOTAL_PAGES = __PDF_DOC.numPages;
-      alert("hello");
+   
       // Show the first page
       showPage(1);
     }).catch(function(error) {
@@ -561,37 +92,9 @@ alert("hello");
     __PDF_DOC.getPage(page_no).then(function(page) {
       // As the canvas is of a fixed width we need to set the scale of the viewport accordingly
       
-      
-      /*
-      var scale_required = __CANVAS.width / page.getViewport(1).width;
-  
-      // Get viewport of the page at required scale
-      var viewport = page.getViewport(scale_required); //scale_required
-  
-      // Set canvas height
-      __CANVAS.height = viewport.height;
-  
-      var renderContext = {
-        canvasContext: __CANVAS_CTX,
-        viewport: viewport
-      };
-      
-      // Render the page contents in the canvas
-      page.render(renderContext).then(function() {
-        __PAGE_RENDERING_IN_PROGRESS = 0;
-  
-        // Re-enable Prev & Next buttons
-        //jQuery("#pdf-next, #pdf-prev").removeAttr('disabled');
-  
-        // Show the canvas and hide the page loader
-        jQuery("#fileCanvas").show();
-        //jQuery("#page-loader").hide();
-        //jQuery("#download-image").show();
-      });
-      */
   // Set scale (zoom) level
   var scale = scaleHeight;
-  
+
   // Get viewport (dimensions)
   var viewport = page.getViewport(scale);
   
@@ -610,17 +113,13 @@ alert("hello");
     return svgGfx.getSVG(opList, viewport);
     })
     .then(function (svg) {
-      alert("hello");
+  
     container.appendChild(svg);
     });
   
     });
     
   }
-
-
-
-
 }
 
 //showPdf(img.src);
@@ -963,15 +462,24 @@ ext = getExt(files[0].name);
 //ako je pdf file
 if(ext == "pdf"){
 
-  alert("hello");
+
     jQuery('#fileCanvas').show();
     
       pdf_url = URL.createObjectURL(jQuery("#fileInput").get(0).files[0]);
       PDFJS.getDocument({ url: pdf_url }).then(function(pdf_doc) {
         __PDF_DOC = pdf_doc;
         __TOTAL_PAGES = __PDF_DOC.numPages;
-        alert("hello");
         // Show the first page
+
+
+
+
+
+
+
+
+
+
         showPage(1);
       }).catch(function(error) {
         // If error re-show the upload button
@@ -980,8 +488,7 @@ if(ext == "pdf"){
         
         alert(error.message);
       });;
-  
-  
+
   }
 
 
@@ -1036,6 +543,7 @@ files[0].name = files[0].name.substr(0,dot_pos) + ".png";
     e.preventDefault();
     highlightSelectBox(this.id);
   });
+
 
   function showPage(page_no) {
     __PAGE_RENDERING_IN_PROGRESS = 1;
