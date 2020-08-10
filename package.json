@@ -1,0 +1,23 @@
+{
+  "name": "invoiceprojfraunhofer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pdf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marijajov65/InvoiceApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marijajov65/InvoiceApp/issues"
+  },
+  "homepage": "https://github.com/marijajov65/InvoiceApp#readme",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

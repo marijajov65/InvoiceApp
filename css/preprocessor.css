@@ -62,11 +62,18 @@
   }
 }
 
+#vatPercD {
+  width: 80%;
+}
+
 #divFile {
   float: none;
   margin-right: 0;
   width: auto;
   border: 0;
+  box-shadow: 0 10px 20px #1d1c1b;
+
+  
 }
 
 @-webkit-keyframes progress {
@@ -663,6 +670,7 @@ input[type=text], select {
 
 #dataDiv {
   float: left;
+  width:80%;
 }
 
 .dataContainer {
@@ -908,6 +916,7 @@ table {
   border-spacing: 2px;
 }
 
+
 /* Media Queries: Tablet Landscape */
 @media screen and (max-width: 1060px) {
   #Page1 {
@@ -919,13 +928,14 @@ table {
   }
   #vatPercDiv {
     float: left;
-    position: absolute;
   }
   #vatPercD {
     float: left;
-    width: 80% !important;
+    width: 80%;
+   
   }
 }
+
 
 /* Media Queries: Tabled Portrait */
 @media screen and (max-width: 768px) {

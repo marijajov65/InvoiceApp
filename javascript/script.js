@@ -14,6 +14,9 @@ const $ = document.querySelector.bind(document);
 var originalImageWidth;
 var originalImageHeight;
 
+var MAX_WIDTH = 600;
+var MAX_HEIGHT = 645;
+
 var scaleHeight = 0;
 var scaleWidth = 0;
 
@@ -22,21 +25,12 @@ var height = 0; //final size
 //Prvo mora da se resizeuje slika
 //Uzmemo dimenzije slike
 
-//When we click on the type field clear all the canvases because 
-//type field has constant options independent of the uploaded file
-document.getElementById("typeD").addEventListener("click", function (){
-  hideAllCanvas();
-  clearHighlights();
 
-  document.getElementById("typeD").value = text.types[1];
-});
 
 
 //Determine the scales
 function resizeTheImage(img){
   //Change these vars if you want to allow for bigger pictures
-  var MAX_WIDTH = 600;
-  var MAX_HEIGHT = 645;
 
   width = originalImageWidth;
   height = originalImageHeight;
@@ -269,7 +263,21 @@ scaleAndDraw(e.target,canvas,JSONList,dropdown,access);
   }
 });
 
-} // end of resize image???
+} // end of resize image
+/*
+*
+*
+*
+*/
+
+//When we click on the type field clear all the canvases because 
+//type field has constant options independent of the uploaded file
+document.getElementById("typeD").addEventListener("click", function (){
+  hideAllCanvas();
+  clearHighlights();
+
+  document.getElementById("typeD").value = text.types[1];
+});
 
 //pass the x or width parameters and scale them to the document container
 function scaleWidthFunc(widthMeasure){
@@ -282,20 +290,21 @@ function scaleHeightFunc(heightMeasure){
 }
 
 //Draw a solid box for the selected value from the drop-down menu
-function drawSelected(c,x,y,width,height){
+function drawSelected(c,x,y,width,height,access){
   c.style.display = "block";
   var ctx = c.getContext("2d");
   ctx.globalAlpha = 0.5;
   ctx.beginPath();
   ctx.rect(x, y, width, height);
   ctx.lineWidth = 2;
-  ctx.strokeStyle = "#4b9d7e";
+
+  ctx.strokeStyle = getStrokeColor(access);
   ctx.stroke();
 
 }
 
 //Draw a dotted box for the other possible options for a field 
-function drawOtherOptions(c,x,y,width,height){
+function drawOtherOptions(c,x,y,width,height,access){
   c.style.display = "block";
   var ctx = c.getContext("2d");
   ctx.globalAlpha = 0.5;
@@ -303,9 +312,44 @@ function drawOtherOptions(c,x,y,width,height){
   ctx.setLineDash([2,2]);
   ctx.rect(x, y, width, height);
   ctx.lineWidth = 1;
-  ctx.strokeStyle = "#4b9d7e";
+
+  ctx.strokeStyle = getStrokeColor(access);
   ctx.stroke();
   ctx.setLineDash([0,0]);
+}
+
+function getStrokeColor(access){
+  if(access === "summary"){
+    return "#4b9d7e"
+  }
+  if(access === "date"){
+    return "#ff0000"
+  }
+
+  if(access === "issuer"){
+    return "#ff6600"
+  }
+  
+  if(access === "id"){
+    return "#0000ff"
+  }
+
+  if(access === "netAmount"){
+    return "#cc0099"
+  }
+
+  if(access === "totalAmount"){
+    return "#339933"
+  }
+
+  if(access === "amount"){
+    return "#009999"
+  }
+
+  if(access === "percentage"){
+    return "#000099"
+  }
+
 }
 
 //Remove everything from the canvas
@@ -314,6 +358,7 @@ function clearCanvas(canvas){
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+//set style:display for all canvas as "none"
 function hideAllCanvas(){
   var canvasElements = document.getElementsByClassName("canvas");
       for(item of canvasElements){
@@ -322,6 +367,7 @@ function hideAllCanvas(){
 }
 
 
+//Set manually the selected attribute to the option that is currently selected
 function setSelect(inputElement,dropdown){
   //alert("iz set selecta" + dropdown)
   if(! (dropdown instanceof HTMLDataListElement)){
@@ -358,7 +404,7 @@ function setSelect(inputElement,dropdown){
   
 }
 
-//Depending on the type of the field, return the corresponding value primarily selected by the backend
+//Depending on the type of the field, return the corresponding field from JSON
 function returnJSONData(access,item){
   if(access === "date"){
     return item.date;
@@ -390,6 +436,7 @@ function returnJSONData(access,item){
 
 }
 
+//Highlight the box that was selected from canvas
 function highlightSelectBox(access){
 
   if(access == "date"){
@@ -410,12 +457,7 @@ function highlightSelectBox(access){
     document.getElementById("netAmountDiv").style.backgroundColor = "rgb(104,177,149,0.5)";
     document.getElementById("totalAmountDiv").style.backgroundColor = "rgb(104,177,149,0.5)";
   }
-/*
-  if(access === "totalAmount"){
-    document.getElementById("totalAmoundDiv").style.backgroundColor = "#4b9d7e";
-  }
 
-  */
   //Mora biti getelementbyclass posto moze biti vise dinamicki dodanih fieldsa
   if(access === "amount"){
     for (item of document.getElementsByClassName("highlightedVATs")){
@@ -431,6 +473,7 @@ function highlightSelectBox(access){
 }
 }
 
+//Clear all highlighted fields in the form 
 function clearHighlights(){
 
   for(item of document.getElementsByClassName("highlightedDivs")){
@@ -448,15 +491,18 @@ function clearHighlights(){
 //on change when the file loads
 function handleFileSelect(evt) {
 
+//Only works for .jpg files
 let img1 = new Image();
 img1.src = window.webkitURL.createObjectURL(evt.target.files[0]);
-
 img1.style.display="none";
 img1.onload = () => {
    originalImageWidth =  img1.width;
    originalImageHeight = img1.height;
    resizeTheImage(img1);
 }
+
+
+
 files = evt.target.files; 
 ext = getExt(files[0].name);
 //ako je pdf file
@@ -470,9 +516,6 @@ if(ext == "pdf"){
         __PDF_DOC = pdf_doc;
         __TOTAL_PAGES = __PDF_DOC.numPages;
         // Show the first page
-
-
-
 
 
 
@@ -744,9 +787,9 @@ selectedValueMapping.set(selected,coordinates);
           coordinates.push(x,y,width,height);
           selectedValueMapping.set(selected,coordinates);
           */
-          drawSelected(canvas,x,y,width,height); //solid line
+          drawSelected(canvas,x,y,width,height,access); //solid line
         }else{
-          drawOtherOptions(canvas,x,y,width,height); //dashed line
+          drawOtherOptions(canvas,x,y,width,height,access); //dashed line
     }
 
        
@@ -772,9 +815,9 @@ selectedValueMapping.set(selected,coordinates);
           coordinates.push(x,y,width,height);
           selectedValueMapping.set(selected,coordinates);
           */
-           drawSelected(canvas,x,y,width,height);
+           drawSelected(canvas,x,y,width,height,access);
          }else{
-           drawOtherOptions(canvas,x,y,width,height);
+           drawOtherOptions(canvas,x,y,width,height,access);
       
      }
 
@@ -820,11 +863,11 @@ inputElement.addEventListener("change",function(){
       var coordinates = new Array();
           coordinates.push(x,y,width,height);
           selectedValueMapping.set(selected1,coordinates);
-          drawSelected(canvas,x,y,width,height);
+          drawSelected(canvas,x,y,width,height,access);
       //alert("hello")
     }
     else{
-      drawOtherOptions(canvas,x,y,width,height);
+      drawOtherOptions(canvas,x,y,width,height,access);
     }
 
   }
@@ -846,9 +889,9 @@ inputElement.addEventListener("change",function(){
       var coordinates = new Array();
           coordinates.push(x,y,width,height);
           selectedValueMapping.set(selected1,coordinates);
-      drawSelected(canvas,x,y,width,height);
+      drawSelected(canvas,x,y,width,height,access);
     }else{
-      drawOtherOptions(canvas,x,y,width,height);
+      drawOtherOptions(canvas,x,y,width,height,access);
  
 }
 
@@ -901,7 +944,7 @@ inputElement.addEventListener("change",function(){
    
   
   
-
+var access = "summary";
 var canvas = createCanvas("summaryCanvas");
 
 canvas.style.display = 'block';
@@ -915,7 +958,7 @@ for(var i =0; i<collection.length; i++){
     var width = selectedValueMapping.get(collection.item(i).value)[2];
     var height = selectedValueMapping.get(collection.item(i).value)[3];
   
-    drawSelected(canvas,x,y,width,height);
+    drawSelected(canvas,x,y,width,height,access);
   }
 }
 document.getElementById("container").appendChild(canvas);
@@ -1426,12 +1469,12 @@ scaleAndDraw(inputElement,canvas,JSONList,dropdown,access);
   document.getElementById('totalAmountExp').innerHTML = document.getElementById('totalAmountExp').innerHTML +dataArray[7];
       }
   
-  
+  /*
       function exportData(){
         $("#Page2").style.display = 'none';
         $("#Page3").style.display = 'block';
       }
-  
+  */
   //Used to display all values form the drop down menu at any point
   function displayDropdownOptions(){
     var oldValue = '';
@@ -1487,7 +1530,7 @@ scaleAndDraw(inputElement,canvas,JSONList,dropdown,access);
             var height = scaleHeightFunc(item.location.height);
             
           
-              drawOtherOptions(canvas,x,y,width,height); //dashed line
+              drawOtherOptions(canvas,x,y,width,height,access); //dashed line
 
     
            
@@ -1514,7 +1557,7 @@ scaleAndDraw(inputElement,canvas,JSONList,dropdown,access);
               selectedValueMapping.set(selected,coordinates);
               */
     
-               drawOtherOptions(canvas,x,y,width,height);
+               drawOtherOptions(canvas,x,y,width,height,access);
           
              
     

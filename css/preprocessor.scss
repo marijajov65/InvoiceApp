@@ -39,20 +39,6 @@ $box-shadow: 0 10px 20px #1d1c1b;
     }
   }
   
-
-    #divFile{
-      float: none;
-      margin-right:0;
-      width:auto;
-      border:0;
-    
-
-    }
-
-
-
-  
-
   @keyframes progress {
     from {
       background-size: 0 100%;
@@ -85,17 +71,27 @@ $box-shadow: 0 10px 20px #1d1c1b;
     }
   }
   
-  %grow
+  %shrink
 {
-        -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        transform: scale(1.05);
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
 }
 
   %appear{
     transform: translateY(0);
     opacity: 1;
     
+  }
+
+
+  #divFile{
+    float: none;
+    margin-right:0;
+    width:auto;
+    border:0;
+    box-shadow: 0 10px 20px #1d1c1b;
+
   }
 
 
@@ -641,6 +637,7 @@ img
 
 #dataDiv{
   float:left;
+  width:80%;
 }
 
 
@@ -928,12 +925,12 @@ table {
   #vatPercDiv{
     //width: auto;
     float:left;
-    position: absolute;
+    //position: absolute;
   }
 
   #vatPercD{
     float: left;
-    width: 80% !important;
+    //width: 80% !important;
   }
 
 }
@@ -941,7 +938,14 @@ table {
 /* Media Queries: Tabled Portrait */
 @media screen and (max-width: 768px) {
   #Page1 { width:80%; }
-  
+  /*
+  #divFile { 
+    @extend %shrink;
+  }
+  #fileCanvas{ 
+    @extend %shrink;
+  }
+*/
 }
 
 
