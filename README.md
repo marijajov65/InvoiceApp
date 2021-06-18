@@ -6,7 +6,7 @@ The scanned fields allow us to choose from numeric/text values that are recogniz
 
 This concept works vice versa as well. If we click on some value on the scanned invoice itself, all possible fields where this value could be applied will light up in green. 
 
-Another feature is that we can add multiple VAT fields and they will all behave the same. This will also affect the final summary page where we should have the appropriate amount of VAT fields.
+Another feature is that we can add multiple VAT fields and they will all behave the same. This will also affect the final summary page where we should have the appropriate amount of VAT fields. Finally, we can also click on Show All which will show all 
 
 Once we are happy with our values, we can submit the document which will take us to the next page where we can see the summary of everytihing we have entered and we have the option to export the document in .csv format.
 
