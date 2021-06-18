@@ -10,6 +10,6 @@ Another feature is that we can add multiple VAT fields and they will all behave 
 
 Once we are happy with our values, we can submit the document which will take us to the next page where we can see the summary of everytihing we have entered and we have the option to export the document in .csv format.
 
-Use test_invoice.jpg to test the project
+Use test_invoice.jpg to test the project. Test it here: marijajov65.github.io/invoiceapp/
 
 ![](fraunhoferdemo.gif)
