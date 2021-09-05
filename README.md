@@ -8,8 +8,11 @@ This concept works vice versa as well. If we click on some value on the scanned 
 
 Another feature is that we can add multiple VAT fields and they will all behave the same. This will also affect the final summary page where we should have the appropriate amount of VAT fields. Finally, we can also click on Show All which will show all 
 
-Once we are happy with our values, we can submit the document which will take us to the next page where we can see the summary of everytihing we have entered and we have the option to export the document in .csv format.
+Once we are happy with our values, we can submit the document which will take us to the next page where we can see the summary of everything we have entered and we have the option to export the document in .csv format.
 
 Use test_invoice.jpg to test the project. Test it here: marijajov65.github.io/invoiceapp/
 
-![](fraunhoferdemo.gif)
+
+https://user-images.githubusercontent.com/42313585/132132644-e4c8ef36-f816-4026-929a-43b736a08f71.mov
+
+
